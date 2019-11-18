@@ -4,7 +4,7 @@ author: Ira Cooke
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   ioslides_presentation:
-    incremental: true
+    incremental: false
     css: styles.css
 ---
 
@@ -12,8 +12,8 @@ output:
 
 - What is RMarkdown?
 - A quick intro to RMarkdown syntax
-- How I made this presentation
 - Using RMarkdown for reproducible research
+- How I made this presentation
 - Using Markdown and RMarkdown to publish to the web
 
 # What is ~~R~~Markdown?
@@ -31,7 +31,7 @@ Its principle author, John Gruber created it for writing articles on his website
 
 The Markdown code for the previous slide looks like this
 
-```markdown
+```asis
 # What is Markdown?
 
 The wikipedia article on Markdown describes it as;
@@ -60,7 +60,7 @@ syntax.</p>
 articles on his website, Daring Fireball in 2004</p>
 ```
 
-## Components
+## Components {.build}
 
 Markdown documents are often converted to something else. Usually html.  This means there are two components to Markdown
 
@@ -68,7 +68,7 @@ Markdown documents are often converted to something else. Usually html.  This me
 
 2. A program that converts Markdown documents into html (or other formats as we will see later)
 
-## Design and Syntax
+## Design and Syntax {.build}
 
 Markdown was designed to be easy to read as-is
 
@@ -124,7 +124,7 @@ Emphasise text with **bold** or _italics_
 > Or you can put some text in a blockquote
 
 
-## Github flavoured Markdown
+## Github flavoured Markdown {.build}
 
 Github uses a variant of Markdown that has become very popular among programmers.  
 
@@ -146,7 +146,7 @@ rhello <- function(){ print("Hello") }
 rhello()
 ```
 
-## RMarkdown
+## RMarkdown {.build}
 
 RMarkdown is an extension to Markdown that is designed to enable reproducible research.  
 
@@ -165,7 +165,7 @@ rhello()
 ```
 
 
-## Plots with RMarkdown
+## Plots with RMarkdown {.build}
 
 This code chunk will produce a plot
 
@@ -182,7 +182,7 @@ ggplot(cars) + geom_smooth(aes(x=speed,y=dist))
 ```
 
 
-## Chunk options
+## Chunk options {.build}
 
 The way chunks are evaluated and displayed can be changed with various options
 
@@ -199,7 +199,7 @@ library(ggplot2)
 ggplot(cars) + geom_smooth(aes(x=speed,y=dist))
 ```
 
-## The RMarkdown engine
+## The RMarkdown engine {.build}
 
 ![](img/workflow.png)
 
@@ -218,7 +218,7 @@ names(knitr::knit_engines$get())
 ```
 
 
-## ---
+## --- {.build}
 
 For example here is a code block that runs `bash`
 
@@ -226,7 +226,7 @@ For example here is a code block that runs `bash`
 echo "Hello from bash" | cowsay
 ```
 
-## ---
+## --- {.build}
 
 If you want to use `python` just install the `reticulate` package
 
@@ -258,6 +258,7 @@ library(knitr)
 include_graphics("img/atenuis_project.png")
 ```
 
+
 ## Github Output
 
 I often use the output format `github_document`.  This works very well for publication because the rendered markdown files will be turned into nice web pages by Github.
@@ -269,4 +270,33 @@ author: "Ira Cooke"
 output: github_document
 ---
 ````
+
+## Other types of output {.build}
+
+At the top of every RMarkdown document is a short bit of `yaml`.  Here you can change the output type.
+
+RMarkdown can be rendered into many different output types including
+
+- Presentations (`ioslides_presentation`, `beamer_presentation`)
+- Document formats (`pdf_document`, `word_document`, `latex_document`)
+- Markdown derivatives (`github_document`, `md_document`)
+- html (`html_document`)
+
+In principle it is easy to switch output types but you will often need to customize to get things looking good in different formats.
+
+
+## Learning Resources {.build}
+
+**Start with:** 
+
+- The RMarkdown section of the book `r4ds` [https://r4ds.had.co.nz/r-markdown.html](https://r4ds.had.co.nz/r-markdown.html)
+
+**Refer to these to lookup features:**
+
+- A book by the creators of RMarkdown [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+- RStudio Cheat Sheets [https://rmarkdown.rstudio.com/lesson-15.html](https://rmarkdown.rstudio.com/lesson-15.html)
+
+**To find out fancy things RMarkdown can do:**
+
+- RStudio's guide to RMarkdown [https://rmarkdown.rstudio.com/](https://rmarkdown.rstudio.com/)
 
